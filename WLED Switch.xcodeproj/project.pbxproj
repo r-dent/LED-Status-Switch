@@ -12,6 +12,9 @@
 		30BB4FD225BE911600A8D543 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30BB4FD125BE911600A8D543 /* Assets.xcassets */; };
 		30BB4FD525BE911600A8D543 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30BB4FD425BE911600A8D543 /* Preview Assets.xcassets */; };
 		30BB4FD825BE911600A8D543 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30BB4FD625BE911600A8D543 /* Main.storyboard */; };
+		30BB4FE625BF4E9200A8D543 /* LEDStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB4FE125BF4C3100A8D543 /* LEDStatus.swift */; };
+		30BB4FE925BF70F600A8D543 /* WLEDService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB4FE825BF70F600A8D543 /* WLEDService.swift */; };
+		30BB4FF725C31E1800A8D543 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB4FF625C31E1800A8D543 /* Settings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +26,9 @@
 		30BB4FD725BE911600A8D543 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		30BB4FD925BE911600A8D543 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		30BB4FDA25BE911600A8D543 /* WLED_Switch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WLED_Switch.entitlements; sourceTree = "<group>"; };
+		30BB4FE125BF4C3100A8D543 /* LEDStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LEDStatus.swift; sourceTree = "<group>"; };
+		30BB4FE825BF70F600A8D543 /* WLEDService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WLEDService.swift; sourceTree = "<group>"; };
+		30BB4FF625C31E1800A8D543 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +62,10 @@
 			isa = PBXGroup;
 			children = (
 				30BB4FCD25BE911500A8D543 /* AppDelegate.swift */,
+				30BB4FE825BF70F600A8D543 /* WLEDService.swift */,
+				30BB4FF625C31E1800A8D543 /* Settings.swift */,
 				30BB4FCF25BE911500A8D543 /* ContentView.swift */,
+				30BB4FE125BF4C3100A8D543 /* LEDStatus.swift */,
 				30BB4FD125BE911600A8D543 /* Assets.xcassets */,
 				30BB4FD625BE911600A8D543 /* Main.storyboard */,
 				30BB4FD925BE911600A8D543 /* Info.plist */,
@@ -145,7 +154,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				30BB4FD025BE911500A8D543 /* ContentView.swift in Sources */,
+				30BB4FE925BF70F600A8D543 /* WLEDService.swift in Sources */,
+				30BB4FE625BF4E9200A8D543 /* LEDStatus.swift in Sources */,
 				30BB4FCE25BE911500A8D543 /* AppDelegate.swift in Sources */,
+				30BB4FF725C31E1800A8D543 /* Settings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,9 +296,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "WLED Switch/WLED_Switch.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"WLED Switch/Preview Content\"";
+				DEVELOPMENT_TEAM = SBPV56G7LG;
+				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "WLED Switch/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -306,9 +322,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "WLED Switch/WLED_Switch.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"WLED Switch/Preview Content\"";
+				DEVELOPMENT_TEAM = SBPV56G7LG;
+				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "WLED Switch/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
