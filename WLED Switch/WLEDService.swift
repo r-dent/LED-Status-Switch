@@ -18,11 +18,11 @@ class WLEDService {
     }
 
     let host: String
+    private let session: URLSession
 
-    private let session: URLSession = .shared
-
-    init(host: String) {
+    init(host: String, session: URLSession = .shared) {
         self.host = host
+        self.session = session
     }
 
     @discardableResult

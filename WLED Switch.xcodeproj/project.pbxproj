@@ -3,12 +3,17 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		306B59D325C70F6E00687465 /* StatusEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306B59D225C70F6E00687465 /* StatusEditView.swift */; };
+		308DFA7A25C5E739001152D6 /* ColorPickerRing in Frameworks */ = {isa = PBXBuildFile; productRef = 308DFA7925C5E739001152D6 /* ColorPickerRing */; };
+		308DFA7D25C6EDDB001152D6 /* LEDStatusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308DFA7C25C6EDDB001152D6 /* LEDStatusViewModel.swift */; };
+		308DFA8025C6EEBF001152D6 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308DFA7F25C6EEBF001152D6 /* SettingsViewModel.swift */; };
+		30BB306125C5CA9A0040E9DF /* NSColor+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB306025C5CA9A0040E9DF /* NSColor+Mapping.swift */; };
 		30BB4FCE25BE911500A8D543 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB4FCD25BE911500A8D543 /* AppDelegate.swift */; };
-		30BB4FD025BE911500A8D543 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB4FCF25BE911500A8D543 /* ContentView.swift */; };
+		30BB4FD025BE911500A8D543 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB4FCF25BE911500A8D543 /* SettingsView.swift */; };
 		30BB4FD225BE911600A8D543 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30BB4FD125BE911600A8D543 /* Assets.xcassets */; };
 		30BB4FD525BE911600A8D543 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30BB4FD425BE911600A8D543 /* Preview Assets.xcassets */; };
 		30BB4FD825BE911600A8D543 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30BB4FD625BE911600A8D543 /* Main.storyboard */; };
@@ -18,9 +23,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		306B59D225C70F6E00687465 /* StatusEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusEditView.swift; sourceTree = "<group>"; };
+		308DFA7C25C6EDDB001152D6 /* LEDStatusViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LEDStatusViewModel.swift; sourceTree = "<group>"; };
+		308DFA7F25C6EEBF001152D6 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		30BB306025C5CA9A0040E9DF /* NSColor+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSColor+Mapping.swift"; sourceTree = "<group>"; };
 		30BB4FCA25BE911500A8D543 /* WLED Switch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WLED Switch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		30BB4FCD25BE911500A8D543 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		30BB4FCF25BE911500A8D543 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		30BB4FCF25BE911500A8D543 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		30BB4FD125BE911600A8D543 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		30BB4FD425BE911600A8D543 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		30BB4FD725BE911600A8D543 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -36,12 +45,24 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				308DFA7A25C5E739001152D6 /* ColorPickerRing in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		308DFA8225C6EF4A001152D6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				30BB4FE125BF4C3100A8D543 /* LEDStatus.swift */,
+				308DFA7C25C6EDDB001152D6 /* LEDStatusViewModel.swift */,
+				30BB306025C5CA9A0040E9DF /* NSColor+Mapping.swift */,
+				308DFA7F25C6EEBF001152D6 /* SettingsViewModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		30BB4FC125BE911500A8D543 = {
 			isa = PBXGroup;
 			children = (
@@ -64,8 +85,9 @@
 				30BB4FCD25BE911500A8D543 /* AppDelegate.swift */,
 				30BB4FE825BF70F600A8D543 /* WLEDService.swift */,
 				30BB4FF625C31E1800A8D543 /* Settings.swift */,
-				30BB4FCF25BE911500A8D543 /* ContentView.swift */,
-				30BB4FE125BF4C3100A8D543 /* LEDStatus.swift */,
+				30BB4FCF25BE911500A8D543 /* SettingsView.swift */,
+				306B59D225C70F6E00687465 /* StatusEditView.swift */,
+				308DFA8225C6EF4A001152D6 /* Models */,
 				30BB4FD125BE911600A8D543 /* Assets.xcassets */,
 				30BB4FD625BE911600A8D543 /* Main.storyboard */,
 				30BB4FD925BE911600A8D543 /* Info.plist */,
@@ -99,6 +121,9 @@
 			dependencies = (
 			);
 			name = "WLED Switch";
+			packageProductDependencies = (
+				308DFA7925C5E739001152D6 /* ColorPickerRing */,
+			);
 			productName = "WLED Switch";
 			productReference = 30BB4FCA25BE911500A8D543 /* WLED Switch.app */;
 			productType = "com.apple.product-type.application";
@@ -126,6 +151,9 @@
 				Base,
 			);
 			mainGroup = 30BB4FC125BE911500A8D543;
+			packageReferences = (
+				308DFA7825C5E739001152D6 /* XCRemoteSwiftPackageReference "colorpicker" */,
+			);
 			productRefGroup = 30BB4FCB25BE911500A8D543 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -153,11 +181,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				30BB4FD025BE911500A8D543 /* ContentView.swift in Sources */,
+				30BB4FD025BE911500A8D543 /* SettingsView.swift in Sources */,
+				306B59D325C70F6E00687465 /* StatusEditView.swift in Sources */,
+				308DFA7D25C6EDDB001152D6 /* LEDStatusViewModel.swift in Sources */,
+				30BB306125C5CA9A0040E9DF /* NSColor+Mapping.swift in Sources */,
 				30BB4FE925BF70F600A8D543 /* WLEDService.swift in Sources */,
 				30BB4FE625BF4E9200A8D543 /* LEDStatus.swift in Sources */,
 				30BB4FCE25BE911500A8D543 /* AppDelegate.swift in Sources */,
 				30BB4FF725C31E1800A8D543 /* Settings.swift in Sources */,
+				308DFA8025C6EEBF001152D6 /* SettingsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -364,6 +396,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		308DFA7825C5E739001152D6 /* XCRemoteSwiftPackageReference "colorpicker" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hendriku/colorpicker.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		308DFA7925C5E739001152D6 /* ColorPickerRing */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 308DFA7825C5E739001152D6 /* XCRemoteSwiftPackageReference "colorpicker" */;
+			productName = ColorPickerRing;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 30BB4FC225BE911500A8D543 /* Project object */;
 }

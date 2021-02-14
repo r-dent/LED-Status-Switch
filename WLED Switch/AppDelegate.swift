@@ -21,37 +21,63 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
 
-        prepareService(settings: settings)
+        let host: String? = prepareService(with: settings.host) ? settings.host : nil
 
         statusBarItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
         statusBarItem.button?.image = NSImage(named: "Icon")
         statusBarMenu = NSMenu(title: "The Title")
         statusBarItem.menu = statusBarMenu
-
-        for status in LEDStatus.all {
-            let menuItem = NSMenuItem(title: status.title, action: #selector(Self.menuItemSelected), keyEquivalent: "")
-            menuItem.tag = status.id
-            statusBarMenu.addItem(menuItem)
-        }
-        statusBarMenu.addItem(NSMenuItem.separator())
-        statusBarMenu.addItem(withTitle: "Settings", action: #selector(Self.settingsItemSelected), keyEquivalent: "")
-        statusBarMenu.addItem(withTitle: "Close", action: #selector(Self.closeItemSelected), keyEquivalent: "")
+        setupItems(for: settings.states, host: host, on: statusBarMenu)
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
     }
 
-    private func prepareService(settings: Settings) {
+    private func setupItems(for states: [LEDStatus], host: String?, on menu: NSMenu) {
 
-        guard let host = settings.host, host.count > 4 else {
-            return
+        menu.removeAllItems()
+
+        for status in states {
+            let menuItem = NSMenuItem(title: status.title, action: #selector(Self.menuItemSelected), keyEquivalent: "")
+            menuItem.tag = status.id
+            menu.addItem(menuItem)
+        }
+        menu.addItem(NSMenuItem.separator())
+        if let host = host {
+            let infoItem = NSMenuItem(title: "Host: \(host)", action: nil, keyEquivalent: "")
+            infoItem.isEnabled = false
+            menu.addItem(infoItem)
+        }
+        menu.addItem(withTitle: "Settings", action: #selector(Self.settingsItemSelected), keyEquivalent: "")
+        menu.addItem(withTitle: "Close", action: #selector(Self.closeItemSelected), keyEquivalent: "")
+
+    }
+
+    @discardableResult
+    private func prepareService(with host: String?) -> Bool {
+
+        guard let host = host, host.count > 4 else {
+            return false
         }
         self.service = WLEDService(host: host)
+        return true
     }
 
     private func showSettingsWindow() {
 
+        NSApp.activate(ignoringOtherApps: true)
+
+        guard window == nil else {
+            window?.makeKeyAndOrderFront(nil)
+            return
+        }
+
+        let viewModel = SettingsViewModel(
+            host: settings.host ?? "",
+            states: settings.states
+        )
+        let settingsView = SettingsView(viewModel: viewModel, delegate: self)
         let window = NSWindow(
             contentRect: NSRect(x: 0, y: 0, width: 300, height: 200),
             styleMask: [.titled, .closable, .fullSizeContentView],
@@ -61,7 +87,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window.isReleasedWhenClosed = false
         window.center()
         window.setFrameAutosaveName("Settings Window")
-        window.contentView = NSHostingView(rootView: SettingsView(settings: settings, delegate: self))
+        window.contentView = NSHostingView(rootView: settingsView)
         window.makeKeyAndOrderFront(nil)
 
         self.window = window
@@ -89,10 +115,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 }
 
 extension AppDelegate: SettingsViewDelegate {
+    func settingsViewDidSubmit(_ view: SettingsView, host: String, states: [LEDStatus]) {
 
-    func settingsViewDidSubmit(_ view: SettingsView, with settings: Settings) {
         window?.close()
-        prepareService(settings: settings)
+        window = nil
+
+        settings.host = host
+        settings.states = states
+
+        let host: String? = prepareService(with: host) ? host : nil
+        setupItems(for: states, host: host, on: statusBarMenu)
     }
 }
 
