@@ -55,11 +55,16 @@ struct SettingsView: View {
         .sheet(isPresented: $viewModel.showEditView) {
 
             if let status = viewModel.statusToEdit {
-                StatusEditView(status: status) {
-                    viewModel.updateStatus(with: $0)
-                }
+                StatusEditView(
+                    status: status,
+                    onCancel: { viewModel.showEditView = false },
+                    onDone: { viewModel.updateStatus(with: $0) }
+                )
             } else {
-                StatusEditView { viewModel.addStatus($0) }
+                StatusEditView(
+                    onCancel: { viewModel.showEditView = false },
+                    onDone: { viewModel.addStatus($0) }
+                )
             }
         }
     }
