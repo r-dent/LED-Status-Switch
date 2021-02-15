@@ -93,11 +93,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.window = window
     }
 
-    @objc func menuItemSelected(_ sender: NSView) {
+    @objc func menuItemSelected(_ sender: NSMenuItem) {
 
-        guard let status = LEDStatus.all.first(where: { $0.id == sender.tag }) else {
+        guard let status = settings.states.first(where: { $0.id == sender.tag }) else {
             return
         }
+        sender.menu?.items.forEach {
+            $0.state = ($0 == sender) ? .on : .off
+        }
+
         guard let service = self.service else {
             showSettingsWindow()
             return
