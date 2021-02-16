@@ -28,7 +28,7 @@ class WLEDService {
     @discardableResult
     func setStatus(_ status: LEDStatus, completion: SetStatusCompletion? = nil) -> URLSessionTask? {
 
-        let path = "http://\(host)/json/state"
+        let path = "\(host)/json/state"
 
         guard let url = URL(string: path) else {
             completion?(.failure(RequestError.address))
